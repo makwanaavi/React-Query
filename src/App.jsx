@@ -1,30 +1,36 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import MainLayout from "../src/components/Layouts/MainLayout"
-import Home from "../src/pages/Home"
-import FetchOld from "../src/pages/FetchOld"
-import FetchRQ from "../src/pages/FetchRQ"
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainLayout from "../src/components/Layouts/MainLayout";
+import Home from "../src/pages/Home";
+import FetchOld from "../src/pages/FetchOld";
+import FetchRQ from "../src/pages/FetchQR"; // fixed import path
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "./App.css"
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />, // changed from string to JSX
+    element: <MainLayout />,
     children: [
       {
         path: "/",
-        element: <Home /> // changed from string to JSX
+        element: <Home />,
       },
       {
         path: "/trad",
-        element: <FetchOld /> // changed from string to JSX
+        element: <FetchOld/>,
       },
       {
         path: "/rq",
-        element: <FetchRQ /> // changed from string to JSX
+        element: <FetchRQ />,
       },
-    ]
-  }
-])
+    ],
+  },
+]);
 function App() {
-  return <RouterProvider router={router}> </RouterProvider>
+  const queryClient = new QueryClient();
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router}> </RouterProvider>
+    </QueryClientProvider>
+  );
 }
-export default App
+export default App;
