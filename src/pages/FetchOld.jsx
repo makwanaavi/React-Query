@@ -4,14 +4,12 @@ import { fetchPosts } from "../Api/Api";
 function FetchOld() {
 
   const [posts, setposts] = useState([]);
-  
+
   const getPostData = async () => {
     try {
-      const res = await fetchPosts();
-      res.status === 200 ? setposts(res.data) : []
-
-      console.log(res.data);
-      // log the data property
+      const res =await fetchPosts();
+      setposts(res)
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -23,12 +21,12 @@ function FetchOld() {
     <>
       <div>
         <ul className="section-accordion">
-          {posts.map((curElem)=>{
-            const {id, title, body} = curElem
+          {posts.map((curElem) => {
+            const { id, title, body } = curElem
             return (
               <li key={id}>
-                <p> <span style={{color:"red"}}>Title :</span>{title}</p>
-                <p> <span style={{color:"red"}}>Body :</span>{body}</p>
+                <p> Title :{title}</p>
+                <p> Body :{body}</p>
               </li>
             )
           })}
