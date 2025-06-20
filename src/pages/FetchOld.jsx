@@ -7,7 +7,7 @@ function FetchOld() {
 
   const getPostData = async () => {
     try {
-      const res =await fetchPosts();
+      const res = await fetchPosts();
       setposts(res)
       console.log(res);
     } catch (error) {
@@ -35,6 +35,5 @@ function FetchOld() {
     </>
   );
 }
-
 export default FetchOld;
 

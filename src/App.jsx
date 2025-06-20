@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/trad",
-        element: <FetchOld/>,
+        element: <FetchOld />,
       },
       {
         path: "/rq",
